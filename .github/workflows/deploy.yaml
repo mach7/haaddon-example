@@ -3,17 +3,11 @@ name: Deploy
 
 # yamllint disable-line rule:truthy
 on:
-  release:
-    types:
-      - published
-  workflow_run:
-    workflows: ["CI"]
-    branches: [main]
-    types:
-      - completed
+  workflow_dispatch:
 
 jobs:
   workflows:
+    if: github.actor == 'mach7'
     uses: hassio-addons/workflows/.github/workflows/addon-deploy.yaml@main
     secrets:
       CAS_API_KEY: ${{ secrets.CAS_API_KEY }}

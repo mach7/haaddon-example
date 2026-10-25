@@ -3,10 +3,9 @@ name: Release Drafter
 
 # yamllint disable-line rule:truthy
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
   workflows:
+    if: github.actor == 'mach7'
     uses: hassio-addons/workflows/.github/workflows/release-drafter.yaml@main

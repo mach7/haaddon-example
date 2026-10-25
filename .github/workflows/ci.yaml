@@ -3,14 +3,9 @@ name: CI
 
 # yamllint disable-line rule:truthy
 on:
-  push:
-  pull_request:
-    types:
-      - opened
-      - reopened
-      - synchronize
   workflow_dispatch:
 
 jobs:
   workflows:
+    if: github.actor == 'mach7'
     uses: hassio-addons/workflows/.github/workflows/addon-ci.yaml@main
