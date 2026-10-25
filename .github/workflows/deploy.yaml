@@ -7,7 +7,7 @@ on:
 
 jobs:
   workflows:
-    if: github.actor == 'mach7'
+    if: github.actor == 'mach7' && github.triggering_actor == 'mach7'
     uses: hassio-addons/workflows/.github/workflows/addon-deploy.yaml@main
     secrets:
       CAS_API_KEY: ${{ secrets.CAS_API_KEY }}
